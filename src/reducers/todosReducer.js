@@ -6,6 +6,8 @@
 // }
 
 const todosReducer = (state = [], action) => {
+    console.log("todosReducer()");
+
     switch (action.type) {
         case 'ADD_TODO':
             return [

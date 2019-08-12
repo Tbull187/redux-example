@@ -8,18 +8,20 @@ import todosReducer from './reducers/todosReducer';
 import * as serviceWorker from './serviceWorker';
 import './styles/index.css';
 
-const reducer = () => [];
+// remeber, reducer is a just a function that returns your state
+const reducerMock = () => [
+    {
+        id: 1,
+        text: "todod item",
+        completed: false
+    }
+];
 
-/**
- *   Store
- */
-// createStore takes a function (your reducer function to be exact) that returns your actual state
 const store = createStore(todosReducer);
 
+// TODO: Use <Provider/> and Connect
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
+    <App store={store}/>,
     document.getElementById('root'));
 
 

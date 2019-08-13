@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { todoList } from '../presentation/todoList';
 import { addTodo } from '../../actions/actions';
+import PropTypes from 'prop-types';
 
-const Todos = ({store}) => {
+const Todos = ({ store }) => {
     let inputVal = "";
-
-    console.log("todo, store?", store)
 
     return (
         <div className="todos">
@@ -13,14 +13,21 @@ const Todos = ({store}) => {
                 <input
                     placeholder="Enter a todo..."
                     type="text"
-                    onChange={(e) => console.log(e)}/>
+                    onChange={(e) => {
+                        console.log(e.target.value);
+                        inputVal = e.target.value;
+                    }}/>
                 <input
                     type="button"
                     value="Add"
-                    onClick={() => store.dispatch(addTodo("texty-text")) }
+                    onClick={() => store.dispatch(addTodo(inputVal)) }
                 />
             </div>
+
+            <div>{inputVal}</div>
+
             <button onClick={() => console.log(store.getState())}>Log State</button>
+            
             <ul className="todosList">
                 {/* {props.store.getState().map(todo => <li key={todo.id}>{todo.text}</li>)} */}
             </ul>
@@ -28,8 +35,12 @@ const Todos = ({store}) => {
     )
 }
 
-// Todos.propTypes = {
-//     store: PropTypes.array.isRequired
-// }
+const mapStateToProps = (state, ownProps) => {
 
-export default Todos;
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todos);

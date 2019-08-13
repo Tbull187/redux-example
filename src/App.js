@@ -1,12 +1,12 @@
 import React from 'react';
-
 import addTodo from './actions/actions';
-import Todos from './components/presentation/todos';
-
+import Todos from './components/container/todos';
 import logo from './styles/logo.svg';
 import './styles/App.css';
 
-const App = ({store}) => {
+
+const App = ({ store }) => {
+  
   return (
     <div className="App">
       <header className="App-header">
